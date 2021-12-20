@@ -1,0 +1,74 @@
+class HealthTracker:
+    def new_user(self, name, sex, year, weight, height):
+        self.steps = []
+        self.hr = []
+        self.mn = []
+        print(F"Name: {name}")
+        print(F"Sex: {sex}")
+        print(F"Age (years): {year}")
+        print(F"Weight (Kg): {weight}")
+        print(F"Height (cms): {height}")
+        self.day = int(input("Enter the total number of days:\n"))
+        for i in range(self.day):
+            self.steps.append(int(input("Enter Steps:\n")))
+            alltimes = input("Enter times in HH:MM:SS\n").split()
+            for time in alltimes:
+                hour, min1, sec = [int(i) for i in time.split(":")]
+                self.hr.append(hour)
+
+                self.mn.append(min1)
+        if self.hr != 0 and self.mn != 0:
+            print(f"Hi Mr. {name}")
+        self.bmi = (weight / height / height) * 10000
+        if self.bmi <= 18.5:
+            print("Try to put some weight", self.bmi)
+        elif self.bmi > 18.6 and self.bmi <= 24.9:
+            print("You are a healthy person", self.bmi)
+        else:
+            print("you are suffering from Obseity", self.bmi)
+        self.km_conv = []
+        self.hr_conv = []
+        for i in self.steps:
+            self.km_conv.append(i / 1312.33595801)
+        for j in self.mn:
+            i = 0
+            a = j / 60
+            b = self.hr[i] + a
+            self.hr_conv.append(b)
+            i += 1
+        print("Your Weekly achievement is as follows: ")
+        if self.hr == 0 and self.mn == 0:
+            self.speed()
+        else:
+            print("No breakout in Sessions: You get a 7/7 award ")
+            self.speed()
+        self.a, self.avg = 0, 0
+        for j in self.km_conv:
+            self.a += j
+            self.avg = self.a / self.day
+        print(f"Your Weekly Average Speed is: {self.avg} Km/hr")
+        print(f"Your Weekly Average Distance is: {sum(self.km_conv)} Km ")
+
+    def speed(self):
+        self.fastest_speed = []
+        j = 0
+        for i in self.km_conv:
+            self.fastest_speed.append(self.km_conv[j] / self.hr_conv[j])
+            j += 1
+        print(F"Your Fastest Speed is: {max(self.fastest_speed)} Km/hr ")
+        print(F"Your Longest Distance is: {max(self.km_conv)} km ")
+        print(F"Your Slowest Speed is: {min(self.fastest_speed)} Km/hr ")
+        print(F"Your Shortest Distance is: {min(self.km_conv)} Km ")
+
+
+h1 = HealthTracker()
+h1.new_user("harshith", "Male", 23, 68, 186)
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+Health Tracker project -Harshith M
+
+In the source code we are asking the user to enter the some credentials to enter namely,
+Name
+sex
+Age
+Height
+Weight
+
+and we are expect the user to enter the further information like ,
+1.day
+2.Number of Steps
+3.Time Taken
+
+
+Output:
+The Expected output should be the average of No of km's walked by the user,
+as per the calculation done in this program.
+The program also prints the information like the weekly average speed,
+and the average distance walked by the user.
